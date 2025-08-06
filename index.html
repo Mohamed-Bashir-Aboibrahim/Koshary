@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Koshary: Egypt’s National Dish</title>
+  <meta name="description" content="Discover everything about Koshary, Egypt's national dish: history, ingredients, fun facts, and why everyone should try it!">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #fbb034;
+      --secondary: #ffdd00;
+      --accent: #ff5151;
+      --dark: #2b2b2b;
+      --light: #fff8f0;
+      --shadow: 0 8px 32px 0 rgba(54,54,54,0.10);
+      --glass: rgba(255,255,255,0.5);
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      scroll-behavior: smooth;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 20% 20%, #fffbe2 0 150px, transparent 250px),
+        radial-gradient(circle at 80% 30%, #ffe55488 0 120px, transparent 250px),
+        radial-gradient(circle at 70% 90%, #ffdd0055 0 90px, transparent 300px),
+        linear-gradient(135deg, #fff8f0 60%, #f9e0a6 100%);
+      animation: bgmove 18s linear infinite;
+    }
+    @keyframes bgmove {
+      0% {background-position: 20% 20%, 80% 30%, 70% 90%;}
+      100% {background-position: 10% 30%, 90% 40%, 80% 85%;}
+    }
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--primary), var(--secondary) 90%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 40px 0 #ffb34a31;
+    }
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--dark);
+      margin-top: 2.2rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 18px #fffbe2bb;
+      animation: fadeIn 1.2s;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-title .rainbow {
+      background: linear-gradient(90deg, #ffe554, #fbb034, #ff5151, #ffdd00, #ffe554 70%);
+      background-size: 200% auto;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: rainbow 3s linear infinite;
+    }
+    @keyframes rainbow {
+      0% {background-position: 0;}
+      100% {background-position: 200%;}
+    }
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #3b3b3b;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 1.6s;
+      z-index: 2;
+      position: relative;
+      background: var(--glass);
+      border-radius: 8px;
+      padding: 0.2em 1em;
+      display: inline-block;
+      box-shadow: 0 2px 12px #ffb03425;
+    }
+    .koshary-illustration {
+      width: 260px;
+      height: 190px;
+      margin: 0 auto 2.2rem;
+      position: relative;
+      animation: bowlFloat 2.5s infinite alternate;
+      z-index: 2;
+      filter: drop-shadow(0 6px 24px #fbb03432);
+    }
+    .koshary-ingredient-dot {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.85;
+      animation: ingredientJump 2s infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes bowlFloat { to { transform: translateY(-18px); } }
+    @keyframes fadeIn { from { opacity: 0;} to { opacity: 1;} }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px);} to { opacity: 1; transform: none;} }
+    @keyframes ingredientJump {
+      0% { transform: translateY(0);}
+      60% { transform: translateY(-25px) scale(1.2);}
+      100% { transform: translateY(0);}
+    }
+    .steam {
+      position: absolute;
+      left: 50%; top: 16px;
+      transform: translateX(-50%);
+      z-index: 5;
+      pointer-events: none;
+    }
+    .steam span {
+      display: inline-block;
+      width: 18px; height: 60px;
+      margin: 0 5px;
+      background: none;
+      border-radius: 50%;
+      opacity: 0.19;
+      background: linear-gradient(180deg, #fffbe2dd 0%, transparent 100%);
+      animation: steamRise 4s infinite alternate;
+    }
+    .steam span:nth-child(2) { animation-delay: 1s;}
+    .steam span:nth-child(3) { animation-delay: 2.1s;}
+    @keyframes steamRise {
+      0% { transform: scaleX(0.8) scaleY(1) translateY(0);}
+      40% { opacity: 0.28;}
+      70% { transform: scaleX(1.2) scaleY(1.2) translateY(-18px);}
+      100% { opacity: 0.14; transform: scaleX(0.7) scaleY(1.4) translateY(-40px);}
+    }
+    .hero-scroll {
+      margin-top: 12vh;
+      color: #222;
+      font-size: 1.5rem;
+      opacity: 0.82;
+      animation: bounce 1.5s infinite alternate;
+      cursor: pointer;
+      text-shadow: 0 2px 8px #fff9;
+      z-index: 3;
+      position: relative;
+    }
+    @keyframes bounce { to { transform: translateY(10px); } }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.21);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 15px #ffb03422;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.6rem;
+      padding: 0.8rem 0;
+      font-weight: 700;
+    }
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 1.07rem;
+      letter-spacing: 1.1px;
+      padding: 0.2em 0.7em;
+      border-radius: 6px;
+      transition: background 0.18s, color 0.16s;
+    }
+    nav a:hover, nav a.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 4.5rem 1rem 2.5rem;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: 0.8s cubic-bezier(.2,.6,.3,1) opacity, 0.8s cubic-bezier(.2,.6,.3,1) transform;
+    }
+    section.visible {
+      opacity: 1;
+      transform: none;
+    }
+    section h2 {
+      color: var(--accent);
+      font-size: 2.3rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1.2px;
+      text-shadow: 0 2px 12px #ffb03430;
+    }
+    section p {
+      font-size: 1.18rem;
+      color: #363636;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .ingredient-carousel {
+      margin: 2.5rem auto 2rem;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: 2.2rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 1rem;
+    }
+    .ingredient-card {
+      background: linear-gradient(135deg, #ffe554 75%, #fffbe2 100%);
+      border-radius: 18px;
+      box-shadow: 0 4px 16px #d7a25b16;
+      width: 180px;
+      min-width: 170px;
+      padding: 1.1rem 1rem;
+      text-align: center;
+      transition: 0.25s transform, 0.15s box-shadow, 0.2s background;
+      cursor: pointer;
+      position: relative;
+      opacity: 0.93;
+      border: 2.5px solid var(--primary);
+      font-weight: 700;
+      font-size: 1.13rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.8rem;
+      will-change: transform;
+      z-index: 1;
+      animation: cardPop 0.9s cubic-bezier(.25,1.5,.45,1.0) backwards;
+    }
+    .ingredient-card:hover, .ingredient-card:focus {
+      transform: scale(1.14) rotate(-2deg);
+      box-shadow: 0 8px 24px #fbb03444;
+      opacity: 1;
+      background: linear-gradient(135deg, #fffbe2 60%, #ffe554 100%);
+      z-index: 2;
+    }
+    @keyframes cardPop {from{transform:scale(0.75); opacity:.1;}to{transform:none; opacity:0.93;}}
+    .ingredient-card .emoji {
+      font-size: 2.3em;
+      filter: drop-shadow(0 2px 8px #ffb03422);
+      margin-bottom: 0.1em;
+      transition: filter 0.18s;
+    }
+    .ingredient-card:focus .emoji,
+    .ingredient-card:hover .emoji {
+      filter: drop-shadow(0 6px 24px #ffb03444);
+    }
+    .ingredient-fact {
+      font-size: 0.99rem;
+      color: var(--accent);
+      opacity: 0;
+      height: 0;
+      transition: opacity 0.35s, height 0.35s;
+      pointer-events: none;
+      font-weight: 400;
+      margin-bottom: 0;
+      margin-top: -0.6em;
+    }
+    .ingredient-card.active .ingredient-fact {
+      opacity: 1;
+      height: auto;
+      pointer-events: auto;
+      margin-bottom: 0.2em;
+    }
+    .timeline {
+      margin: 3rem auto 0;
+      max-width: 750px;
+      position: relative;
+      text-align: left;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(var(--primary), var(--accent));
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    .timeline-event {
+      position: relative;
+      margin: 0 0 2.5rem 65px;
+      padding-left: 18px;
+      animation: eventFade 1.2s cubic-bezier(.25,.7,.4,1) backwards;
+    }
+    @keyframes eventFade {from{opacity:.1;transform:translateY(40px);}to{opacity:1;transform:none;}}
+    .timeline-dot {
+      position: absolute;
+      left: -54px;
+      top: 8px;
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 16px #ff515155;
+      z-index: 2;
+      opacity: 0.6;
+      animation: dotPop 0.6s;
+    }
+    @keyframes dotPop { from { transform: scale(0.5);} to   { transform: scale(1);} }
+    .timeline-event h4 {
+      margin: 0 0 0.2rem;
+      font-size: 1.13rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .timeline-event p {
+      margin: 0;
+      font-size: 1.03rem;
+      color: #444;
+      line-height: 1.5;
+    }
+    .fun-facts {
+      margin: 3rem auto 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .fact-card {
+      background: #fffbe2;
+      color: var(--dark);
+      border-radius: 16px;
+      padding: 1.1rem 1.6rem;
+      font-size: 1.13rem;
+      font-weight: 600;
+      min-width: 210px;
+      box-shadow: 0 2px 12px #ffdd0033;
+      border-bottom: 3px solid var(--primary);
+      transition: 0.22s transform;
+      animation: factPop 1s cubic-bezier(.2,1.2,.4,1) backwards;
+      will-change: transform;
+      position: relative;
+    }
+    .fact-card:hover { transform: scale(1.1) rotate(2deg);}
+    @keyframes factPop {from{opacity:.1;transform:scale(.6);}to{opacity:1;transform:none;}}
+    footer {
+      text-align: center;
+      padding: 2.5rem 0 1.1rem;
+      font-size: 1.1rem;
+      color: #888;
+      background: none;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    footer a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    @media (max-width: 1050px) {
+      .ingredient-carousel { gap: 1.2rem;}
+    }
+    @media (max-width: 900px) {
+      .hero-title { font-size: 2.1rem; }
+      .ingredient-carousel, .fun-facts { flex-direction: column; gap: 1.1rem;}
+      .ingredient-card, .fact-card { width: 90%; min-width: 0;}
+      .timeline { max-width: 98vw; }
+      .timeline-event { margin-left: 56px; }
+      nav { gap: 1.2rem;}
+    }
+    @media (max-width: 600px) {
+      .koshary-illustration { width: 150px; height: 100px;}
+      section { padding: 2.5rem 0.5rem 1.1rem; }
+      .timeline-event { margin-left: 28px; }
+      .timeline::before { left: 10px; }
+      nav { font-size: 0.95rem; padding: 0.3rem 0;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">What is Koshary?</a>
+    <a href="#ingredients">Ingredients</a>
+    <a href="#history">History</a>
+    <a href="#fun-facts">Fun Facts</a>
+  </nav>
+  <div class="hero" id="home">
+    <div class="hero-title"><span class="rainbow">Koshary</span><br>
+      <span style="font-size:1.3rem;font-weight:400;color:#7b530b;">Egypt’s National Comfort Food</span>
+    </div>
+    <div class="hero-subtitle">A delicious story of culture, taste and togetherness</div>
+    <div class="koshary-illustration" aria-label="Koshary Bowl Illustration">
+      <div class="steam">
+        <span></span><span></span><span></span>
+      </div>
+      <svg viewBox="0 0 220 160">
+        <ellipse cx="110" cy="140" rx="90" ry="20" fill="#c9a960" opacity="0.34"/>
+        <ellipse cx="110" cy="120" rx="85" ry="28" fill="#ffe9a0" stroke="#c9a960" stroke-width="3"/>
+        <ellipse cx="110" cy="110" rx="79" ry="22" fill="#fffbe2"/>
+        <ellipse cx="110" cy="110" rx="65" ry="15" fill="#d7a25b"/>
+        <ellipse cx="110" cy="112" rx="42" ry="6" fill="#ff5151" opacity="0.7"/>
+        <path d="M70,105 Q80,95 90,105 Q100,115 110,105 Q120,95 130,105 Q140,115 150,105" fill="none" stroke="#7b530b" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="110" cy="140" rx="75" ry="13" fill="#d7a25b"/>
+        <path d="M25,120 Q110,180 195,120 Q190,150 110,155 Q30,150 25,120" fill="#ffd46b" stroke="#c9a960" stroke-width="3"/>
+      </svg>
+      <div class="koshary-ingredient-dot" style="background:#b28c44;width:18px;height:18px;left:70px;top:86px;animation-delay:0s;"></div>
+      <div class="koshary-ingredient-dot" style="background:#fbe4a3;width:15px;height:15px;left:110px;top:90px;animation-delay:.7s;"></div>
+      <div class="koshary-ingredient-dot" style="background:#ffefb7;width:12px;height:12px;left:150px;top:102px;animation-delay:1.1s;"></div>
+      <div class="koshary-ingredient-dot" style="background:#b28c44;width:13px;height:13px;left:95px;top:120px;animation-delay:.4s;"></div>
+      <div class="koshary-ingredient-dot" style="background:#ff5151;width:10px;height:10px;left:130px;top:110px;animation-delay:.9s;"></div>
+      <div class="koshary-ingredient-dot" style="background:#7b530b;width:10px;height:10px;left:125px;top:105px;animation-delay:1.3s;"></div>
+      <div class="koshary-ingredient-dot" style="background:#fbe4a3;width:9px;height:9px;left:85px;top:105px;animation-delay:.6s;"></div>
+    </div>
+    <div class="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});">
+      ▼ Learn about Koshary
+    </div>
+  </div>
+  <section id="about">
+    <h2>What is Koshary?</h2>
+    <p>
+      <b>Koshary</b> (also spelled Koshari, Kushari) is Egypt’s national dish and ultimate street food. It’s a hearty, satisfying bowl of <b>rice, lentils, pasta, chickpeas, spicy tomato sauce, and crispy fried onions</b>, all mixed together to create a symphony of flavors and textures.<br>
+      From humble beginnings as a working-class meal, Koshary has become a symbol of Egyptian hospitality, unity, and culinary creativity!
+    </p>
+    <div style="display:flex;justify-content:center;gap:1.5em;flex-wrap:wrap;margin:2em 0;">
+      <div class="ingredient-fact" style="opacity:1;height:auto;background:#fffbe2;border-radius:10px;padding:1em 1.3em;box-shadow:0 2px 12px #ffb03425;font-size:1.08em;">
+        <b>Did you know?</b> Koshary is <span style="color:var(--accent)">100% vegan</span> and packed with protein!
+      </div>
+    </div>
+  </section>
+  <section id="ingredients">
+    <h2>The Magic Ingredients</h2>
+    <div class="ingredient-carousel">
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🍚</div>
+        Rice
+        <div class="ingredient-fact">The warm, fluffy base of Koshary.</div>
+      </div>
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🍝</div>
+        Pasta
+        <div class="ingredient-fact">Short pasta (macaroni), for extra texture.</div>
+      </div>
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🥄</div>
+        Lentils
+        <div class="ingredient-fact">Earthy protein! Brown lentils add richness.</div>
+      </div>
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🧆</div>
+        Chickpeas
+        <div class="ingredient-fact">Nutty, nutritious, and delicious bite.</div>
+      </div>
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🧅</div>
+        Crispy Onions
+        <div class="ingredient-fact">Deep-fried for a crunchy finish!</div>
+      </div>
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🍅</div>
+        Spicy Tomato Sauce
+        <div class="ingredient-fact">Tangy, garlicky & spicy — the soul of Koshary.</div>
+      </div>
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🌶️</div>
+        Hot Chili Sauce
+        <div class="ingredient-fact">For the brave: fiery Egyptian “daqqa”.</div>
+      </div>
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🍋</div>
+        Vinegar
+        <div class="ingredient-fact">A dash of tangy flavor (optional)!</div>
+      </div>
+      <div class="ingredient-card" tabindex="0">
+        <div class="emoji">🧂</div>
+        Cumin & Spices
+        <div class="ingredient-fact">Signature earthy aroma of Egyptian cuisine.</div>
+      </div>
+    </div>
+  </section>
+  <section id="history">
+    <h2>The Story of Koshary</h2>
+    <div class="timeline" aria-label="Koshary History Timeline">
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <h4>1800s: Colonial Inspiration</h4>
+        <p>Koshary’s roots may trace to British-Indian “khichri” (rice & lentils), brought to Egypt by colonial soldiers. Egyptians made it their own by adding pasta, tomato sauce, and fried onions.</p>
+      </div>
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <h4>1920s: Egyptian Street Food</h4>
+        <p>Koshary appears in Cairo food stalls, quickly becoming a staple for workers and students—affordable, filling, and vegetarian-friendly.</p>
+      </div>
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <h4>Modern Day: National Dish</h4>
+        <p>Today, Koshary is enjoyed by all Egyptians—rich and poor, young and old—and is served everywhere from street carts to fancy restaurants!</p>
+      </div>
+    </div>
+  </section>
+  <section id="fun-facts">
+    <h2>Fun Facts & Why You Should Try Koshary!</h2>
+    <div class="fun-facts">
+      <div class="fact-card">Koshary is 100% vegan!</div>
+      <div class="fact-card">Every family has its own “secret” Koshary recipe.</div>
+      <div class="fact-card">Egyptians often compete: <br><b>Who can eat the biggest bowl?</b></div>
+      <div class="fact-card">Koshary shops let you customize: <br>extra sauce, more onions, “volcano” spicy!</div>
+      <div class="fact-card">It’s a symbol of unity—mixing many cultures and ingredients.</div>
+      <div class="fact-card">It’s affordable and filling—food for everyone!</div>
+      <div class="fact-card">Koshary is the ultimate street food experience in Egypt.</div>
+    </div>
+    <p style="margin-top:2rem;">
+      Whether you’re a foodie, history buff, or culture lover, <b>Koshary</b> is a must-try!<br>
+      Next time you visit Egypt, don’t miss it—<span style="color:var(--accent)">your taste buds will thank you!</span>
+    </p>
+  </section>
+  <script>
+    function updateNav() {
+      const navLinks = document.querySelectorAll('nav a');
+      let found = false;
+      for(const link of navLinks) {
+        link.classList.remove('active');
+        const target = document.getElementById(link.getAttribute('href').replace('#',''));
+        if (target && !found && window.scrollY + 80 >= target.offsetTop) {
+          link.classList.add('active');
+          found = true;
+        }
+      }
+    }
+    document.querySelectorAll('nav a').forEach(link=>{
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href').replace('#','');
+        document.getElementById(id).scrollIntoView({behavior:'smooth'});
+      });
+    });
+    window.addEventListener('scroll', updateNav); window.addEventListener('DOMContentLoaded', updateNav);
+    function revealSections() {
+      document.querySelectorAll('section').forEach(sec => {
+        const r = sec.getBoundingClientRect();
+        if (r.top < window.innerHeight-120) sec.classList.add('visible');
+        else sec.classList.remove('visible');
+      });
+    }
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('DOMContentLoaded', revealSections);
+    document.querySelectorAll('.ingredient-card').forEach(card => {
+      card.addEventListener('click', function() {
+        document.querySelectorAll('.ingredient-card').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+      });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          this.click();
+        }
+      });
+      card.addEventListener('blur', function() {
+        this.classList.remove('active');
+      });
+    });
+    document.body.addEventListener('click', function(e) {
+      if (!e.target.closest('.ingredient-card')) {
+        document.querySelectorAll('.ingredient-card').forEach(c => c.classList.remove('active'));
+      }
+    });
+    window.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.timeline-event').forEach((ev,i) =>
+        setTimeout(()=>ev.style.opacity=1, 150+350*i)
+      );
+      document.querySelectorAll('.timeline-dot').forEach((dot,i) =>
+        setTimeout(()=>dot.style.opacity=1, 250+450*i)
+      );
+      document.querySelectorAll('.fact-card').forEach((fact,i) =>
+        setTimeout(()=>fact.style.opacity=1, 200+400*i)
+      );
+    });
+    document.querySelectorAll('.koshary-ingredient-dot').forEach((dot,i)=>{
+      dot.style.animationDelay = (0.3*i)+'s';
+    });
+  </script>
+</body>
+</html>
